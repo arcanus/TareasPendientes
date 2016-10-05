@@ -1,0 +1,23 @@
+body {
+  margin: 10px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+header nav ul li {
+  display: inline-block;
+  list-style-type: none;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+header nav ul li a {
+  text-decoration: none;
+}
+
+.container {
+  margin: 10px;
+}
