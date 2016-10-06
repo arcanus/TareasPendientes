@@ -1,7 +1,12 @@
 <div class="container">
   <h1>Tareas Pendientes:</h1>
-  <form>
-    <input type="text" name="tarea" placeholder="Ingrese aquí una tarea">
+  <form method="post" action="/tarea/add/">
+    <input type="text" name="descripcion" placeholder="Ingrese aquí una tarea">
     <input type="submit" name="agregar" value="Agregar">
   </form>
+  <ul>
+    {{#each tareas}}
+      <li>{{this.descripcion}}</li>
+    {{/each}}
+  </ul>
 </div>
