@@ -1,0 +1,37 @@
+<div class="container">
+  <h1>Lista De Compras:</h1>
+
+  <br>
+
+  <form method="post" action="/articulos/add/">
+    <input id="inpDescripcion" type="text" name="descripcion" placeholder="Ingrese aquí un artículo">
+    <input type="submit" name="agregar" value="Agregar" hidden>
+  </form>
+
+  <br>
+
+  <table style="width:100%">
+
+    <thead>
+      <tr>
+        <th class="columna_fecha">Fecha:</th>
+        <th>Artículos:</th>
+        <th class="columna_acciones">Acciones:</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each articulos}}
+        <tr>
+          <td>{{this.fecha}}</td>
+          <td>{{this.descripcion}}</td>
+          <td>
+            <form action="/articulos/delete/{{this._id}}" method="post" class="form_actions">
+              <input type="submit" name="Eliminar" value="Eliminar" class="boton">
+            </form>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+</div>
