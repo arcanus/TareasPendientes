@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 var routes = require('./routes/index');
+var tareas = require('./routes/tareas');
 
 var app = express();
 mongoose.connect('localhost:27017/tareasPendientes');
@@ -24,6 +25,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
+app.use('/tareas', tareas);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

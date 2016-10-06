@@ -5,30 +5,18 @@ var Tarea = require('../models/tarea.model');
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
-  Tarea.find({activo: true},function(err, docs){
-    if (err) {
-      return res.send("Se ha producido un error...");
+  Tarea.aggregate(
+    [{"$match": {"activo": true}},
+      {"$project": {
+      "fecha": {"$dateToString": {"format":"%Y-%m-%d", "date": "$fecha"}},
+      "descripcion": "$descripcion"},
+    }], function(err, docs){
+    if(err) {
+      res.send("Error....");
     }
-
     res.render('tareas', {tareas: docs});
   });
-});
-
-router.post('/tarea/add/', function(req, res, next){
-  var descripcion = req.body.descripcion;
-  var  activo = true;
-
-  var nuevaTarea = new Tarea({
-    descripcion: descripcion,
-    fecha: new Date(),
-    activo: true
-  });
-
-  nuevaTarea.save(function(err, nuevaTarea){
-    console.log("Se guardó la tarea!!!");
-    res.redirect('/');
-  });
-
+  
 });
 
 module.exports = router;

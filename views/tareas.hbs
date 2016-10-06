@@ -1,12 +1,47 @@
 <div class="container">
   <h1>Tareas Pendientes:</h1>
-  <form method="post" action="/tarea/add/">
-    <input type="text" name="descripcion" placeholder="Ingrese aquí una tarea">
-    <input type="submit" name="agregar" value="Agregar">
+
+  <br>
+
+  <form method="post" action="/tareas/add/">
+    <input id="inpDescripcion" type="text" name="descripcion" placeholder="Ingrese aquí una tarea">
+    <input type="submit" name="agregar" value="Agregar" hidden>
   </form>
-  <ul>
-    {{#each tareas}}
-      <li>{{this.descripcion}}</li>
-    {{/each}}
-  </ul>
+
+  <br>
+
+  <table style="width:100%">
+
+    <thead>
+      <tr>
+        <th>
+          Fecha:
+        </th>
+        <th>
+          Descripción:
+        </th>
+        <th>
+          Acciones:
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each tareas}}
+        <tr>
+          <td>
+            {{this.fecha}}
+          </td>
+          <td>
+            {{this.descripcion}}
+          </td>
+          <td>
+            <form action="/tareas/delete/{{this._id}}" method="post">
+              <input type="submit" name="Eliminar" value="Eliminar">
+            </form>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
 </div>
