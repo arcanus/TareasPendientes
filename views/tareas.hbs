@@ -14,29 +14,19 @@
 
     <thead>
       <tr>
-        <th>
-          Fecha:
-        </th>
-        <th>
-          Descripción:
-        </th>
-        <th>
-          Acciones:
-        </th>
+        <th class="columna_fecha">Fecha:</th>
+        <th>Descripción:</th>
+        <th class="columna_acciones">Acciones:</th>
       </tr>
     </thead>
     <tbody>
       {{#each tareas}}
         <tr>
+          <td>{{this.fecha}}</td>
+          <td>{{this.descripcion}}</td>
           <td>
-            {{this.fecha}}
-          </td>
-          <td>
-            {{this.descripcion}}
-          </td>
-          <td>
-            <form action="/tareas/delete/{{this._id}}" method="post">
-              <input type="submit" name="Eliminar" value="Eliminar">
+            <form action="/tareas/delete/{{this._id}}" method="post" class="form_actions">
+              <input type="submit" name="Eliminar" value="Eliminar" class="boton">
             </form>
           </td>
         </tr>
